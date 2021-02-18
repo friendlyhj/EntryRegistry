@@ -41,13 +41,13 @@ allow to add items, blocks by zencode
     side="BOTH"
 [[dependencies.entryregistry]]
     modId="crafttweaker"
-    versionRange="[7.1.0.125,)"
+    versionRange="[7.1.0,)"
     mandatory=true
     ordering="AFTER"
     side="BOTH"
-#[[dependencies.entryregistry]]
-#    modId="openloader"
-#    versionRange="[9.0.2,)"
-#    mandatory=true
-#    ordering="NONE"
-#    side="CLIENT"
+[[dependencies.entryregistry]]
+    modId="globaldataandresourcepacks"
+    mandatory=true
+    versionRange="[1.0,)"
+    ordering="NONE"
+    side="BOTH"

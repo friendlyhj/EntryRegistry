@@ -17,12 +17,12 @@ import java.util.List;
 @SuppressWarnings({"unchecked", "rawtypes"})
 public class DataGenerator {
     public static final List<IDataWriter> WRITERS = new ArrayList<>();
-    private static final List<Object> TO_WRITE_OBJECTS = new ArrayList<>();
+    private static final List<IDataGeneratorTarget> TO_WRITE_OBJECTS = new ArrayList<>();
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final List<String> tempOutPaths = new ArrayList<>();
 
-    public static void addToGenerateDataObject(Object obj) {
-        TO_WRITE_OBJECTS.add(obj);
+    public static void addToGenerateDataObject(IDataGeneratorTarget target) {
+        TO_WRITE_OBJECTS.add(target);
     }
 
     public static void addWriter(IDataWriter<?> writer) {
@@ -30,16 +30,14 @@ public class DataGenerator {
     }
 
     public static void generate() throws IOException {
-        for (Object toWriteObject : TO_WRITE_OBJECTS) {
+        for (IDataGeneratorTarget toWriteObject : TO_WRITE_OBJECTS) {
             for (IDataWriter writer : WRITERS) {
                 if (toWriteObject.getClass().isAssignableFrom(writer.writeObjClass())) {
                     writer.getWritePaths(tempOutPaths, toWriteObject);
                     for (String tempOutPath : tempOutPaths) {
                         File file = new File(tempOutPath);
                         if (!file.exists()) {
-                            JsonObject json = new JsonObject();
-                            writer.write(tempOutPath, json, toWriteObject);
-                            String s = GSON.toJson(json);
+                            String s = GSON.toJson(writer.write(tempOutPath, toWriteObject));
                             FileUtils.writeStringToFile(new File(tempOutPath), s, StandardCharsets.UTF_8);
                         }
                     }

@@ -6,7 +6,14 @@ import net.minecraft.block.Block;
  * @author youyihj
  */
 public class BlockContent extends Block {
-    public BlockContent(Properties properties) {
-        super(properties);
+    private final BlockRepresentation representation;
+
+    public BlockContent(BlockRepresentation representation) {
+        super(representation.getBuilder().getBlockProperties());
+        this.representation = representation;
+    }
+
+    public BlockRepresentation getRepresentation() {
+        return representation;
     }
 }

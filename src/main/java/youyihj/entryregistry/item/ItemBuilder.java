@@ -2,6 +2,7 @@ package youyihj.entryregistry.item;
 
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import org.openzen.zencode.java.ZenCodeType;
 import youyihj.entryregistry.EntryRegistry;
 
@@ -17,7 +18,7 @@ public class ItemBuilder {
     @ZenCodeType.Constructor
     public ItemBuilder(String name) {
         this.name = name;
-        this.properties = new Item.Properties();
+        this.properties = new Item.Properties().group(ItemGroup.MISC);
     }
 
     public Item.Properties getItemProperties() {
