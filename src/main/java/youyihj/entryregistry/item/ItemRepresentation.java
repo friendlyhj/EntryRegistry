@@ -1,10 +1,8 @@
 package youyihj.entryregistry.item;
 
-import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import org.openzen.zencode.java.ZenCodeType;
 import youyihj.entryregistry.EntryRegistry;
-import youyihj.entryregistry.action.register.ActionRegisterItem;
 import youyihj.entryregistry.data.IDataGeneratorTarget;
 
 /**
@@ -21,10 +19,5 @@ public class ItemRepresentation implements IDataGeneratorTarget {
 
     public ItemBuilder getBuilder() {
         return builder;
-    }
-
-    @ZenCodeType.Method
-    public void register() {
-        CraftTweakerAPI.apply(new ActionRegisterItem(this));
     }
 }

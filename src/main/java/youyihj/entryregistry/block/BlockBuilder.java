@@ -1,12 +1,13 @@
 package youyihj.entryregistry.block;
 
+import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import org.openzen.zencode.java.ZenCodeType;
 import youyihj.entryregistry.EntryRegistry;
+import youyihj.entryregistry.action.register.ActionRegisterBlock;
 import youyihj.entryregistry.item.ItemBuilder;
 
 /**
@@ -47,7 +48,7 @@ public class BlockBuilder {
     }
 
     @ZenCodeType.Method
-    public BlockRepresentation build() {
-        return new BlockRepresentation(this);
+    public void buildAndRegister() {
+        CraftTweakerAPI.apply(new ActionRegisterBlock(new BlockRepresentation(this)));
     }
 }
