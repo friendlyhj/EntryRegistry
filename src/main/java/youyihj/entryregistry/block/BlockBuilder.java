@@ -10,6 +10,7 @@ import org.openzen.zencode.java.ZenCodeType;
 import youyihj.entryregistry.EntryRegistry;
 import youyihj.entryregistry.action.register.ActionRegisterBlock;
 import youyihj.entryregistry.item.ItemBuilder;
+import youyihj.entryregistry.item.MCItemGroup;
 
 /**
  * @author youyihj
@@ -129,6 +130,12 @@ public class BlockBuilder {
     @ZenCodeType.Method
     public BlockBuilder setRequiresTool() {
         properties.setRequiresTool();
+        return this;
+    }
+
+    @ZenCodeType.Method
+    public BlockBuilder group(MCItemGroup group) {
+        itemBuilder.group(group);
         return this;
     }
 

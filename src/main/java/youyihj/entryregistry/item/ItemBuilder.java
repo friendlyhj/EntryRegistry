@@ -53,8 +53,8 @@ public class ItemBuilder {
     }
 
     @ZenCodeType.Method
-    public ItemBuilder group(ItemGroup groupIn) {
-        properties.group(groupIn);
+    public ItemBuilder group(MCItemGroup groupIn) {
+        properties.group(groupIn.getInternal());
         return this;
     }
 
