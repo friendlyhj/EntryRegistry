@@ -1,6 +1,8 @@
 package youyihj.entryregistry.item;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemUseContext;
+import net.minecraft.util.ActionResultType;
 
 /**
  * @author youyihj
@@ -15,5 +17,14 @@ public class ItemContent extends Item {
 
     public ItemRepresentation getRepresentation() {
         return representation;
+    }
+
+    @Override
+    public ActionResultType onItemUse(ItemUseContext context) {
+        if (representation.itemUse == null) {
+            return super.onItemUse(context);
+        } else {
+            return ActionResultType.valueOf(representation.itemUse.apply(context));
+        }
     }
 }

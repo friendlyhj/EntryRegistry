@@ -82,8 +82,6 @@ public class ItemBuilder {
         return this;
     }
 
-    // TODO: food and containerItem
-
     @ZenCodeType.Method
     public void buildAndRegister() {
         CraftTweakerAPI.apply(new ActionRegisterItem(new ItemRepresentation(this)));
